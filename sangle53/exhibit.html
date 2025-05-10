@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link 
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;700&display=swap" 
+    rel="stylesheet"
+  > 
+    <title>S'angle 53기</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      font-family: 
+        'IBM Plex Sans KR',     
+        'Malgun Gothic',        
+        'Apple SD Gothic Neo',  
+        sans-serif;             
+    }
+    body {
+      background-color: white;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 60px;
+      border-bottom: 1px solid #e0e0e0;
+      transition: top 0.3s ease;
+      z-index: 1000;
+    }
+
+    .navbar .menu-icon {
+      position: absolute;
+      left: 20px;
+      font-size: 24px;
+      cursor: pointer;
+      user-select: none;
+      color: #888;
+      transition: color 0.2s ease;
+    }
+
+    .navbar .menu-icon:hover,
+    .navbar .menu-icon.active {
+      color: #000;
+    }
+
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .navbar .logo a {
+      text-decoration: none;
+      color: inherit; 
+    }
+    .content .poster {
+      width: 100%;
+      max-width: 1200px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #f4f4f4;
+      padding: 20px;
+      transition: left 0.3s ease;
+      z-index: 999;
+    }
+
+    .sidebar.open {
+      left: 0;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      margin-top: 40px; 
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin: 15px 0;
+    }
+
+    .sidebar ul li a {
+      display: block;
+      text-decoration: none;
+      color: #888;
+      transition: color 0.2s ease;
+    }
+
+    .sidebar ul li a:hover,
+    .sidebar ul li a.active {
+      color: #000;
+    }
+
+    .content {
+      margin-top: 70px;
+      padding: 20px;
+    }
+
+    .exhibit-details {
+      margin-top: 40px;
+    }
+    /*.exhibit-details .intro-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }*/
+    .intro-title {
+      font-size: 1.4rem;
+      font-weight: 400;     
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .exhibit-details .intro-title {
+      margin-right: 0.5rem;
+      margin-bottom: 1rem;
+      font-weight: 100;
+      font-size: 1.8rem;
+    }
+    .exhibit-details .main-title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .exhibit-details .main-title-ex {
+        font-size: 1.3rem;
+        font-weight: 400;
+    }
+    .exhibit-details .description {
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .exhibit-details .divider {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 1rem 0;
+    }
+    .exhibit-details .location-title {
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin-top: 2rem;
+    }
+    .footer {
+      background-color: #f0f0f0;       
+      color: #555555;                  
+      text-align: center;              
+      padding: 8px 0;                  
+      font-size: 12px;                 
+      margin-top: 40px;                
+    }
+    .guide {
+        margin-top: 0.7rem;
+        margin-left: 0.5rem;
+        font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar" id="navbar">
+    <div class="menu-icon" id="menuIcon" onclick="toggleSidebar()">☰</div>
+    <div class="logo"><a href="index.html">S'angle</a></div>
+  </div>
+
+  <div class="sidebar" id="sidebar">
+    <p><strong>메뉴</strong></p>
+    <ul>
+      <li><a href="exhibit.html" class="active">전시회 소개</a></li>
+      <li><a href="works.html">출품작 소개</a></li>
+      <li><a href="about.html">S'angle 소개</a></li>
+    </ul>
+  </div>
+
+  <div class="content">
+    <h2 class="intro-title">
+            | 전시회 소개
+    </h2>    
+    <img src="전시회포스터.png" alt="전시회 포스터" class="poster">
+    <div class="exhibit-details">
+              <h2 class="main-title-ex">
+                S'angle 53기 신인전
+              </h2>
+              <h2 class="main-title">
+                Ready to journey
+              </h2>
+        
+              <p class="description">
+                올해 53기를 맞이하며 많은 신규 부원들이 합류하였고, 학기가 시작되기 전 여러 부원들이 다양한 여행을 다녀왔다는 사실을 알게 되었습니다.
+                이에 이번 전시를 통해 부원들이 각자의 시선으로 포착한 여행의 순간을 사진으로 선보이고자 합니다.<br><br>
+                전시장을 여행의 출발지인 '공항' 콘셉트로 꾸며 학우들이 마치 여행을 떠나는 듯한 몰입감을 느낄 수 있도록 구성하였습니다.
+                이를 통해 단순한 사진 전시를 넘어, 관객들이 여행이라는 공통된 경험을 통해 서로 소통하고 공감할 수 있는 공간이 될 것입니다.<br><br>
+                다양한 여행지의 순간을 사진으로 감상하며 영감을 얻고, 마음의 여유를 찾는 소중한 시간이 될 것입니다.
+              </p>
+        
+              <hr class="divider">
+        
+              <h3 class="location-title">
+                | 전시 안내
+              </h3>
+              <p class="guide">
+                - 전시 기간: 5월 12일 ~ 5월 15일<br>
+                - 운영 시간: 10:00 ~ 18:00<br>
+                - 전시 장소: 운정그린캠퍼스 B동 지하 1층 전시장4
+              </p>
+            </div>
+  </div>
+
+  <script>
+    const menuIcon = document.getElementById('menuIcon');
+    const sidebar = document.getElementById('sidebar');
+    const links = sidebar.querySelectorAll('a');
+
+    function toggleSidebar() {
+      sidebar.classList.toggle('open');
+      menuIcon.classList.toggle('active');
+    }
+
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      const currentScroll = window.pageYOffset;
+      navbar.style.top = currentScroll > lastScroll ? '-70px' : '0';
+      lastScroll = currentScroll <= 0 ? 0 : currentScroll;
+    });
+  </script>
+  <footer class="footer">
+    2025 S'angle 53기
+  </footer>
+
+</body>
+</html>

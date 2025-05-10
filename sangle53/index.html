@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link 
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;700&display=swap" 
+    rel="stylesheet"
+  > 
+
+  <title>S'angle 53기</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      font-family: 
+        'IBM Plex Sans KR',     
+        'Malgun Gothic',        
+        'Apple SD Gothic Neo',
+        sans-serif;            
+    
+      }
+
+    body {
+      background-color: white;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 60px;
+      border-bottom: 1px solid #e0e0e0;
+      transition: top 0.3s ease;
+      z-index: 1000;
+    }
+
+    .navbar .menu-icon {
+      position: absolute;
+      left: 20px;
+      font-size: 24px;
+      cursor: pointer;
+      user-select: none;
+      color: #888;
+      transition: color 0.2s ease;
+    }
+
+    .navbar .menu-icon:hover,
+    .navbar .menu-icon.active {
+      color: #000;
+    }
+
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .navbar .logo a {
+      text-decoration: none;
+      color: inherit; 
+    }
+
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #f4f4f4;
+      padding: 20px;
+      transition: left 0.3s ease;
+      z-index: 999;
+    }
+
+    .sidebar.open {
+      left: 0;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      margin-top: 40px; 
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin: 15px 0;
+    }
+
+    .sidebar ul li a {
+      display: block;
+      text-decoration: none;
+      color: #888;
+      transition: color 0.2s ease;
+    }
+
+    .sidebar ul li a:hover,
+    .sidebar ul li a.active {
+      color: #000;
+    }
+
+    .content {
+      margin-top: 70px;
+      padding: 20px;
+    }
+
+    .content .poster {
+      width: 100%;
+      max-width: 1200px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    .footer {
+      background-color: #f0f0f0;       
+      color: #555555;                  
+      text-align: center;              
+      padding: 8px 0;                 
+      font-size: 12px;                
+      margin-top: 40px;            
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar" id="navbar">
+    <div class="menu-icon" id="menuIcon" onclick="toggleSidebar()">☰</div>
+    <div class="logo"><a href="index.html">S'angle</a></div>
+  </div>
+
+  <div class="sidebar" id="sidebar">
+    <p><strong>메뉴</strong></p>
+    <ul>
+      <li><a href="exhibit.html">전시회 소개</a></li>
+      <li><a href="works.html">출품작 소개</a></li>
+      <li><a href="about.html">S'angle 소개</a></li>
+    </ul>
+  </div>
+
+  <div class="content">
+    <img src="전시회포스터.png" alt="전시회 포스터" class="poster">
+  </div>
+
+  <script>
+    const menuIcon = document.getElementById('menuIcon');
+    const sidebar = document.getElementById('sidebar');
+    const links = sidebar.querySelectorAll('a');
+
+    function toggleSidebar() {
+      sidebar.classList.toggle('open');
+      menuIcon.classList.toggle('active');
+    }
+
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      const currentScroll = window.pageYOffset;
+      navbar.style.top = currentScroll > lastScroll ? '-70px' : '0';
+      lastScroll = currentScroll <= 0 ? 0 : currentScroll;
+    });
+  </script>
+  <footer class="footer">
+    2025 S'angle 53기
+  </footer>
+</body>
+</html>
